@@ -9,6 +9,8 @@ namespace Plux;
 
 abstract class Store {
 	
+	use \Evenement\EventEmitterTrait;
+	
 	/**
 	 * The registration id given by the dispatcher
 	 * @var string

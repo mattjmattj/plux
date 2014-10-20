@@ -37,6 +37,21 @@ class StoreTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($action, $store->last_action);
 	}
 	
+	public function testEvents () {
+		$store = new TestableStore ($this->dispatcher);
+		$actual_message = null;
+		
+		$store->on('handled', function ($message) use (&$actual_message) {
+			$actual_message = $message;
+		});
+		
+		$action = new \Plux\Action ('foobar');
+		
+		$this->dispatcher->dispatch ($action);
+		
+		$this->assertEquals ($action->getId(), $actual_message);
+	}
+	
 }
 
 class TestableStore extends \Plux\Store {
@@ -47,5 +62,6 @@ class TestableStore extends \Plux\Store {
 	public function handle (\Plux\Action $action) {
 		$this->last_action = $action;
 		$this->call_count++;
+		$this->emit ('handled', [$action->getId()]);
 	}
 }
