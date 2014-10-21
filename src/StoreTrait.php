@@ -7,7 +7,7 @@
 
 namespace Plux;
 
-abstract class Store {
+trait StoreTrait {
 	
 	use \Evenement\EventEmitterTrait;
 	

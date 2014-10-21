@@ -8,7 +8,7 @@
 namespace Plux\Test;
 
 
-class StoreTest extends \PHPUnit_Framework_TestCase {
+class StoreTraitTest extends \PHPUnit_Framework_TestCase {
 
 	private $dispatcher;
 
@@ -17,7 +17,6 @@ class StoreTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testRegistration () {
-		
 		$store = new TestableStore ($this->dispatcher);
 		
 		$registered_callables = $this->dispatcher->getRegisteredCallables();
@@ -54,7 +53,9 @@ class StoreTest extends \PHPUnit_Framework_TestCase {
 	
 }
 
-class TestableStore extends \Plux\Store {
+class TestableStore {
+	
+	use \Plux\StoreTrait;
 	
 	public $call_count = 0;
 	public $last_action = null;
