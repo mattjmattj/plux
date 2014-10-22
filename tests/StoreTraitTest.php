@@ -17,7 +17,8 @@ class StoreTraitTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testRegistration () {
-		$store = new TestableStore ($this->dispatcher);
+		$store = new TestableStore ();
+		$store->register($this->dispatcher);
 		
 		$registered_callables = $this->dispatcher->getRegisteredCallables();
 		$this->assertTrue(isset($registered_callables[$store->getRegistrationId()]));
@@ -26,7 +27,8 @@ class StoreTraitTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testHandle () {
-		$store = new TestableStore ($this->dispatcher);
+		$store = new TestableStore ();
+		$store->register($this->dispatcher);
 		
 		$action = new \Plux\Action ('foobar');
 		
@@ -37,7 +39,8 @@ class StoreTraitTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testEvents () {
-		$store = new TestableStore ($this->dispatcher);
+		$store = new TestableStore ();
+		$store->register($this->dispatcher);
 		$actual_message = null;
 		
 		$store->on('handled', function ($message) use (&$actual_message) {

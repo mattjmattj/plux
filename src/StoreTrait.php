@@ -25,7 +25,7 @@ trait StoreTrait {
 	/**
 	 * @param Dispatcher $dispatcher - the Dispatcher we will be registered to
 	 */ 
-	public function __construct (Dispatcher $dispatcher) {
+	public function register (Dispatcher $dispatcher) {
 		$this->registration_id = $dispatcher->register (
 			[$this, 'handle']
 		);
