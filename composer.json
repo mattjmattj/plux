@@ -1,14 +1,23 @@
 {
-	"require": {
-		"php": ">=5.4.0",
-		"evenement/evenement": "~2.0"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "4.3.*"
-	},
-	"autoload": {
-		"psr-4": {
-			"Plux\\": "src"
-		}
-	}
+    "name": "mattjmattj/plux",
+    "description": "Librairy for implementing a Flux-like one-direction flow architecture server-side",
+    "license": "FreeBSD",
+    "authors": [
+        {
+            "name": "Matthias Jouan",
+            "email": "matthias.jouan@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "evenement/evenement": "~2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Plux\\": "src"
+        }
+    }
 }
