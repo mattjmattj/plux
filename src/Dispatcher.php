@@ -7,6 +7,10 @@
 
 namespace Plux;
 
+/**
+ * A Dispatcher is responsible for transmitting Actions to Stores via a bus
+ * Every registered Store will receive all the dispatched Actions
+ */ 
 class Dispatcher {
 	
 	/**

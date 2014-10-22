@@ -7,6 +7,9 @@
 
 namespace Plux;
 
+/**
+ * An Action is what flows through the bus via the Dispatcher
+ */ 
 class Action {
 	
 	/**

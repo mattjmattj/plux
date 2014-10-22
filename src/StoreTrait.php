@@ -7,6 +7,11 @@
 
 namespace Plux;
 
+/**
+ * A Store performs two things:
+ *  - handle Actions dispatched by the Dispatcher
+ *  - emit events so that Components can update themselves
+ */ 
 trait StoreTrait {
 	
 	use \Evenement\EventEmitterTrait;
