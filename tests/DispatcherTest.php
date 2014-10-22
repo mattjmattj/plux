@@ -58,14 +58,14 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase {
 		$c1count = $c2count = 0;
 		
 		$callable1 = function (\Plux\Action $action) use (&$c1count, &$actualdata) {
-			if ($action->getId() == 'foobar') {
+			if ($action->getType() == 'foobar') {
 				$c1count++;
 			}
 			$actualdata = $action->getData();
 		};
 		
 		$callable2 = function (\Plux\Action $action) use (&$c2count) {
-			if ($action->getId() == 'foobar') {
+			if ($action->getType() == 'foobar') {
 				$c2count++;
 			}
 		};

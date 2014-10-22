@@ -13,10 +13,10 @@ namespace Plux;
 class Action {
 	
 	/**
-	 * The Action id, better if actually unique in your application
+	 * The Action type, better if actually unique in your application
 	 * @var string
 	 */
-	private $id;
+	private $type;
 	
 	/** 
 	 * The Action data, if any
@@ -25,19 +25,19 @@ class Action {
 	private $data;
 	
 	/**
-	 * @param string $id
+	 * @param string $type
 	 * @param array $data
 	 */
-	public function __construct ($id, array $data = []) {
-		$this->id = $id;
+	public function __construct ($type, array $data = []) {
+		$this->type = $type;
 		$this->data = $data;
 	}
 	
 	/**
-	 * @return string $id
+	 * @return string $type
 	 */
-	public function getId () {
-		return $this->id;
+	public function getType () {
+		return $this->type;
 	}
 	
 	/**

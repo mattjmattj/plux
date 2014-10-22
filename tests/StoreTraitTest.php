@@ -51,7 +51,7 @@ class StoreTraitTest extends \PHPUnit_Framework_TestCase {
 		
 		$this->dispatcher->dispatch ($action);
 		
-		$this->assertEquals ($action->getId(), $actual_message);
+		$this->assertEquals ($action->getType(), $actual_message);
 	}
 	
 }
@@ -66,6 +66,6 @@ class TestableStore {
 	public function handle (\Plux\Action $action) {
 		$this->last_action = $action;
 		$this->call_count++;
-		$this->emit ('handled', [$action->getId()]);
+		$this->emit ('handled', [$action->getType()]);
 	}
 }
