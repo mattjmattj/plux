@@ -3,7 +3,7 @@
 ## introduction
 
 **plux** is a PHP library created to answer a simple question:
-> *Does implementing a [Flux](http://facebook.github.io/flux/docs/overview.html)-like, one-direction flow architecture **server-side** make any sense?*
+> *Does implementing a [Flux](http://facebook.github.io/flux/docs/overview.html)-like, one-direction flow architecture server-side make any sense?*
 
 ## quick how-to
 
