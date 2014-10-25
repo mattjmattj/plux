@@ -37,12 +37,4 @@ trait StoreTrait {
 	public function getRegistrationId () {
 		return $this->registration_id;
 	}
-	
-	/**
-	 * Must handle every given Action. Called by the dispatcher the store is
-	 * registered to.
-	 * @param Action $action
-	 */ 
-	public abstract function handle (Action $action);
-	
 }

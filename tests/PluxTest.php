@@ -37,7 +37,7 @@ class PluxTest extends \PHPUnit_Framework_TestCase {
 	}
 }
 
-class TestStore {
+class TestStore implements \Plux\Store{
 	
 	use \Plux\StoreTrait;
 

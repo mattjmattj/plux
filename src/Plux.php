@@ -16,7 +16,7 @@ class Plux {
 	/** @var Dispatcher */
 	private static $dispatcher;
 	
-	/** var StoreTrait[] */
+	/** var Store[] */
 	private static $stores;
 	
 	public static function initialize () {
@@ -32,7 +32,7 @@ class Plux {
 	}
 	
 	/**
-	 * @return StoreTrait[]
+	 * @return Store[]
 	 */ 
 	public static function getStores () {
 		return self::$stores;
@@ -40,16 +40,17 @@ class Plux {
 	
 	/**
 	 * @param string $name
-	 * @param StoreTrait $store
+	 * @param Store $store
 	 */ 
-	public static function addStore ($name, $store) {
+	public static function addStore ($name, Store $store) {
 		$store->register(self::getDispatcher());
 		self::$stores[$name] = $store;
 	}
 	
 	/**
+	 * Retrieves the wanted Store, or null
 	 * @param string $name
-	 * @return StoreTrait
+	 * @return Store
 	 */ 
 	public static function getStore ($name) {
 		if (isset(self::$stores[$name])) {
