@@ -84,6 +84,12 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase {
 		$this->dispatcher->dispatch (new \Plux\Action ('foobar',[$data]));
 		$this->assertEquals(1, $c1count);
 		$this->assertEquals(2, $c2count);
+		
+		$this->dispatcher->unregister($c2id);
+		
+		$this->dispatcher->dispatch (new \Plux\Action ('foobar',[$data]));
+		$this->assertEquals(1, $c1count);
+		$this->assertEquals(2, $c2count);
 	}
 	
 }
