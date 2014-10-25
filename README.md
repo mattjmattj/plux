@@ -1,5 +1,7 @@
 # plux
 
+[![Build Status](https://travis-ci.org/mattjmattj/plux.svg?branch=master)](https://travis-ci.org/mattjmattj/plux) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mattjmattj/plux/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mattjmattj/plux/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/mattjmattj/plux/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mattjmattj/plux/?branch=master)
+
 ## introduction
 
 **plux** is a PHP library created to answer a simple question:
