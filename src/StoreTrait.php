@@ -31,6 +31,9 @@ trait StoreTrait {
 		);
 	}
 	
+	/**
+	 * @return string - the registration id of store to the Dispatcher
+	 */ 
 	public function getRegistrationId () {
 		return $this->registration_id;
 	}
