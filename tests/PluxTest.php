@@ -34,6 +34,7 @@ class PluxTest extends \PHPUnit_Framework_TestCase {
 		
 		$this->assertEquals ('store1', Plux::getStore('Store1')->name);
 		$this->assertEquals ('store2', Plux::getStore('Store2')->name);
+		$this->assertNull ( Plux::getStore('Foo'));
 	}
 }
 
