@@ -96,18 +96,25 @@ class Dispatcher {
 		}
 		
 		foreach ($ids as $id) {
-			if (!empty($this->pending[$id])) {
-				throw new Exception('Circular dependency detected while'
-					. 'waiting for ' . $id);
-			}
-			
-			if (empty($this->callables[$id])) {
-				throw new Exception($id . ' does not match any registered'
-					. 'callbacks');
-			}
-			
-			$this->call($id);
+			$this->waitForOne($id);
 		}
+	}
+	
+	/**
+	 * @param string $id
+	 */ 
+	private function waitForOne ($id) {
+		if (!empty($this->pending[$id])) {
+			throw new Exception('Circular dependency detected while'
+				. 'waiting for ' . $id);
+		}
+		
+		if (empty($this->callables[$id])) {
+			throw new Exception($id . ' does not match any registered'
+				. 'callbacks');
+		}
+		
+		$this->call($id);
 	}
 
 	private function call ($id) {
