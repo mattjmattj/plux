@@ -25,6 +25,12 @@ class Action {
 	private $data;
 	
 	/**
+	 * The Dispatcher which dispatched this Action
+	 * @var Dispatcher
+	 */ 
+	private $dispatcher;
+	
+	/**
 	 * @param string $type
 	 * @param array $data
 	 */
@@ -45,5 +51,17 @@ class Action {
 	 */
 	public function getData () {
 		return $this->data;
+	}
+	
+	/**
+	 * @return Dispatcher
+	 */ 
+	public function getDispatcher () {
+		return $this->dispatcher;
+	}
+	
+	
+	public function setDispatcher ($dispatcher) {
+		$this->dispatcher = $dispatcher;
 	}
 }

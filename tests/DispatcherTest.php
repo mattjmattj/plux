@@ -63,6 +63,7 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase {
 			}
 			$actualdata = $action->getData();
 			$this->assertTrue($this->dispatcher->isDispatching());
+			$this->assertEquals($this->dispatcher, $action->getDispatcher());
 		};
 		
 		$callable2 = function (\Plux\Action $action) use (&$c2count) {
@@ -70,6 +71,7 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase {
 				$c2count++;
 			}
 			$this->assertTrue($this->dispatcher->isDispatching());
+			$this->assertEquals($this->dispatcher, $action->getDispatcher());
 		};
 		
 		$c1id = $this->dispatcher->register ($callable1);

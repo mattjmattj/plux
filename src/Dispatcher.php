@@ -49,6 +49,7 @@ class Dispatcher {
 	 */ 
 	public function dispatch (Action $action) {
 		$this->dispatching = true;
+		$action->setDispatcher($this);
 		foreach ($this->callables as $callable) {
 			call_user_func_array($callable, [$action]);
 		}
