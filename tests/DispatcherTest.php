@@ -96,4 +96,64 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(2, $c2count);
 	}
 	
+	
+	public function testWaitFor () {
+		
+		$log = [];
+		$ids = [];
+		
+		$ids[] = $this->dispatcher->register(function ($action) use (&$log, &$ids) {
+			$log[] = 1;
+			$action->getDispatcher()->waitFor([$ids[1], $ids[2]]);
+			$log[] = 4;
+		});
+		
+		$ids[] = $this->dispatcher->register(function () use (&$log) {
+			$log[] = 2;
+		});
+		
+		$ids[] = $this->dispatcher->register(function () use (&$log) {
+			$log[] = 3;
+		});
+		
+		$ids[] = $this->dispatcher->register(function () use (&$log) {
+			$log[] = 5;
+		});
+		
+		$this->dispatcher->dispatch(new \Plux\Action('testWaitFor'));
+		
+		$this->assertEquals([1,2,3,4,5], $log);
+	}
+	
+	/**
+	 * @expectedException \Plux\Exception
+	 */ 
+	public function testWaitForCircularDependency () {
+		
+		$ids = [];
+		
+		$ids[] = $this->dispatcher->register(function ($action) use (&$ids) {
+			$action->getDispatcher()->waitFor([$ids[1]]);
+		});
+		
+		$ids[] = $this->dispatcher->register(function ($action) use (&$ids) {
+			$action->getDispatcher()->waitFor([$ids[0]]);
+		});
+		
+		$this->dispatcher->dispatch(new \Plux\Action('testWaitForCircularDependency'));
+	}
+	
+	
+	/**
+	 * @expectedException \Plux\Exception
+	 */ 
+	public function testUnknownWaitFor () {
+		
+		$this->dispatcher->register(function ($action) {
+			$action->getDispatcher()->waitFor(['not-existing-id']);
+		});
+		
+		
+		$this->dispatcher->dispatch(new \Plux\Action('testUnknownWaitFor'));
+	}
 }
