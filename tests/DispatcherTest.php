@@ -62,12 +62,14 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase {
 				$c1count++;
 			}
 			$actualdata = $action->getData();
+			$this->assertTrue($this->dispatcher->isDispatching());
 		};
 		
 		$callable2 = function (\Plux\Action $action) use (&$c2count) {
 			if ($action->getType() == 'foobar') {
 				$c2count++;
 			}
+			$this->assertTrue($this->dispatcher->isDispatching());
 		};
 		
 		$c1id = $this->dispatcher->register ($callable1);

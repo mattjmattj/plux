@@ -19,6 +19,11 @@ class Dispatcher {
 	private $callables = [];
 	
 	/**
+	 * @var boolean - true when dispatching
+	 */ 
+	private $dispatching = false;
+	
+	/**
 	 * Registers a callable to the dispatcher. The callable will be called
 	 * whenever something goes into the bus
 	 * @param callable $callable - the callable to register to the dispatcher
@@ -43,9 +48,11 @@ class Dispatcher {
 	 * @param Action $action
 	 */ 
 	public function dispatch (Action $action) {
+		$this->dispatching = true;
 		foreach ($this->callables as $callable) {
 			call_user_func_array($callable, [$action]);
 		}
+		$this->dispatching = false;
 	}
 	
 	/**
@@ -53,5 +60,9 @@ class Dispatcher {
 	 */ 
 	public function getRegisteredCallables () {
 		return $this->callables;
+	}
+	
+	public function isDispatching () {
+		return $this->dispatching;
 	}
 }
