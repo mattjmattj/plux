@@ -67,10 +67,6 @@ very opened and you are not forced to use the Component trait at all.
 
 A small but complete example of implementation is available [here](https://github.com/mattjmattj/plux-demo)
 
-## next ?
-
-* implement a [`waitFor`](http://facebook.github.io/flux/docs/dispatcher.html#content) equivalent to represent per-action store interdependency
-
 ## debate
 
 You think that even in a per-request context like in PHP, implementing a one-direction
